@@ -24,13 +24,26 @@ Vue.config.productionTip = false
 Vue.prototype.$bus = new Vue() // event Bus 用于无关系组件间的通信。
 
 /* eslint-disable no-new */
+// new Vue({
+//   el: '#app',
+//   router,
+//   components: { App },
+//   template: '<App/>',
+//   //store
+// })
+
 new Vue({
   el: '#app',
   router,
   components: { App },
   template: '<App/>',
-  //store
-})
+  store,
+  render: h => h(App),
+  //这里与vue.config.js中的事件名相对应
+  mounted () {
+    document.dispatchEvent(new Event('render-event'))
+  }
+}).$mount('#app')
 
 
 router.beforeEach(function(to, from, next) {
