@@ -29,6 +29,9 @@ export default {
   created () {
     sessionStorage.setItem('isLogin',false); 
     sessionStorage.setItem('permissionsId','')
+  },
+  mounted(){
+    document.dispatchEvent(new Event('render-event'))
   }
 }
 </script>
