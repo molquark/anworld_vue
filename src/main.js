@@ -6,6 +6,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import MetaInfo from 'vue-meta-info'
 
 import  qs from 'qs'
 
@@ -15,6 +16,7 @@ import  qs from 'qs'
 // Vue.prototype.GLOBAL = Global//挂载到Vue实例上面
 
 Vue.use(ElementUI);
+Vue.use(MetaInfo);
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs
 //axios.defaults.baseURL = '/api'

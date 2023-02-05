@@ -18,9 +18,25 @@ export default ({
     return{
       content:'',
       article:{},
+      metaTitle: "新闻动态, 相关资讯",
+      metaDataList: [
+        {
+          name: 'keyWords',
+          content: 'anworld, 安宁疗护资讯, 安宁疗护相关新闻, anworld工作室'
+        },
+        {
+          name: 'description',
+          content: '安宁疗护相关资讯. 我们提供安宁疗护相关的最新资讯, 紧跟安宁疗护发展进程.'
+        }
+      ],
     }
   },
-  
+  metaInfo () {
+    return {
+      title: this.metaTitle,
+      meta: this.metaDataList,
+    }
+  },
   created() {
     // this.article = this.$bus["RTF-Article"] ? JSON.parse(this.$bus["RTF-Article"]):{};
     // 判断是用query还是路径参数传递id
@@ -41,7 +57,17 @@ export default ({
           console.log(res)
           this.article = res.data.data
           this.content = this.article.content;
+          this.metaTitle = this.article.headline;
+          this.metaDataList[1].content = this.simpleContent(this.content);
         });
+    },
+    simpleContent(content) {
+      // console.log(content)
+      var simpleContent = content.replace(/<.*?>/g, '');
+      if(simpleContent.length > 250) {
+        return simpleContent.substr(0, 250) + '......'
+      }
+      else return simpleContent
     }
   },
  
