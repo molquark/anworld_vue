@@ -135,9 +135,34 @@ const webpackConfig = merge(baseWebpackConfig, {
       '/RTFarticle/34','/RTFarticle/35','/RTFarticle/36',
       '/RTFarticle/37','/RTFarticle/38','/RTFarticle/39',
       '/RTFarticle/40'],
+      minify: {
+        minifyCSS: true,
+        removeComments: true,
+      },
+      server: {
+        proxy: {
+          // 配制代理
+          '/api': {
+            target: 'http://120.76.202.206:49394',
+            changeOrigin: true,
+            secure: false,
+          },
+ 
+        }
+      },
       renderer: new PuppeteerRenderer({
+        inject: {
+          foo: 'bar',
+        },
         headless: false,
         renderAfterDocumentEvent: 'render-event',
+        // args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        maxConcurrentRoutes: 10,
+        renderAfterTime: 10000,
+        timeout: 0,
+        // navigationParams: {
+				// 	timeout: 0
+ 				// }
       }),
     }),
     

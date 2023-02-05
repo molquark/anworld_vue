@@ -2,6 +2,7 @@
 
 <template>
   <div id="app">
+  <!-- <div> -->
     <el-header class="header-parent-class">
       <mynavbar></mynavbar>
     </el-header>
@@ -31,7 +32,9 @@ export default {
     sessionStorage.setItem('permissionsId','')
   },
   mounted(){
-    document.dispatchEvent(new Event('render-event'))
+    setTimeout(()=>{
+      document.dispatchEvent(new Event('render-event'))
+    },15000)
   }
 }
 </script>

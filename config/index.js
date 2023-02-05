@@ -16,7 +16,6 @@ module.exports = {
       '/api':{
         target: "https://120.76.202.206:39394",
         secure: false,
-        //target: "https://39.99.231.136:9394",
         changeOrigin: false,
         pathRewrite:{
             '^/api':'/api'
@@ -70,7 +69,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
 
     // Run the build command with an extra argument to
