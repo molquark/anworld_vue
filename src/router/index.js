@@ -94,6 +94,11 @@ export default new Router({
       ],
     },
     {
+      path: '/RTFarticle/:id',  // 新增path参数
+      name: 'RTFarticle',
+      component: RTFarticle,
+    },
+    {
       path: '/RTFarticle',
       name: 'RTFarticle',
       component: RTFarticle,

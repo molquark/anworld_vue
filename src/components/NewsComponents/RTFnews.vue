@@ -25,7 +25,8 @@ export default {
     Jump :function(item){
         this.article = item;
         this.$bus["RTF-Article"] = JSON.stringify(this.article);
-        this.$router.push({path:"/RTFarticle",query:{from:this.$route.path, id: this.article.id}});
+        this.$router.push({path:"/RTFarticle/"+this.article.id,
+          query:{from:this.$route.path, id: this.article.id}});
     },
     async getAllArticleInfo() {
       this.data = (await this.$axios.post('/api/article/getAllArticles')).data.data;

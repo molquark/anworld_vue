@@ -20,16 +20,31 @@ export default ({
       article:{},
     }
   },
+  
   created() {
     // this.article = this.$bus["RTF-Article"] ? JSON.parse(this.$bus["RTF-Article"]):{};
-    this.$axios.post('/api/article/getArticleById',qs.stringify({articleId:this.$route.query.id}))
-    .then(res=>{
-      // console.log(res)
-      this.article = res.data.data
-      this.content = this.article.content;
-    });
-    
+    // 判断是用query还是路径参数传递id
+    if(this.$route.params.id){
+      this.getArticle(this.$route.params.id)
+    }else if (this.$route.query.id){
+      this.getArticle(this.$route.query.id)
+    }else if (this.$route.query.article){
+      this.getArticle(JSON.parse(this.$route.query.article).id)
+    }
   },
+
+  methods: {
+    getArticle(id){
+      this.$axios.post('/api/article/getArticleById',
+        qs.stringify({articleId: id}))
+        .then(res=>{
+          console.log(res)
+          this.article = res.data.data
+          this.content = this.article.content;
+        });
+    }
+  },
+ 
 })
 </script>
 
