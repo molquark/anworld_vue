@@ -130,12 +130,18 @@ const webpackConfig = merge(baseWebpackConfig, {
       // Required - The path to the webpack-outputted app to prerender.
       staticDir: path.join(__dirname, '../dist'),
       // Required - Routes to render.
-      routes: [ '/', '/HelloWorld','/RTFarticle?id=2'],
+      routes: [ '/', '/HelloWorld','/RTFarticle/30',
+      '/RTFarticle/31','/RTFarticle/32','/RTFarticle/33',
+      '/RTFarticle/34','/RTFarticle/35','/RTFarticle/36',
+      '/RTFarticle/37','/RTFarticle/38','/RTFarticle/39',
+      '/RTFarticle/40'],
       renderer: new PuppeteerRenderer({
         headless: false,
         renderAfterDocumentEvent: 'render-event',
       }),
     }),
+    
+    
     
 
   ]
